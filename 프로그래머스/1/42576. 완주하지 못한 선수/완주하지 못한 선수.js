@@ -1,15 +1,11 @@
 function solution(participant, completion) {
-    let obj = {};
+
+    // 알파벳 순으로 정렬
+    participant.sort();
+    completion.sort();
     
-    for (const x of participant) {
-        obj[x] = (obj[x] || 0) + 1
-    }
-    
-    for (const y of completion) {
-        obj[y] = (obj[y] || 0) - 1
-    }
-    
-    for (let key in obj) {
-        if (obj[key] === 1) return key
+    for (let i = 0; i < participant.length; i++) {
+        if (participant[i] !== completion[i])
+            return participant[i];
     }
 }
