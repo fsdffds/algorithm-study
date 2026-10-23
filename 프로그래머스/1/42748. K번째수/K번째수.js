@@ -1,29 +1,21 @@
 function solution(array, commands) {
+    // 1. commands에서 하나씩
+    // 2. array[i-1] j-1 까지 자르기
+    // 3. 자른 배열에서 array[k-1] 구하기
+    // 4. result 배열에 더하기
+    
+    let i, j, k;
     let answer = [];
     
-    // array = [1, 5, 2, 6, 3, 7, 4];
-    // commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]];
-    
-    // commands에서 하나씩 꺼내기
-    
-    for (let i = 0; i <= commands.length - 1; i++) {
-        const cmd = commands[i];
+    for (let x = 0; x < commands.length; x++) {
+        i = commands[x][0];
+        j = commands[x][1];
+        k = commands[x][2];
         
-        const start = cmd[0];
-        const end = cmd[1];
-        const pick = cmd[2];
-        
-        // 1. 자르기
-        const sliced = array.slice(start - 1, end);
-        
-        // 2. 정렬하기 (오름차순)
-        const sorted = sliced.sort((a, b) => a - b);
-        
-        // 3. 하나만 뽑기
-        const picked = sorted[pick - 1];
-        
-        answer.push(picked);
+        const newArray = array.slice(i-1, j).sort((a, b) => a - b);
+        const a = newArray[k-1];
+        answer.push(a);
     }
-    
     return answer;
+    
 }
