@@ -1,8 +1,17 @@
 function solution(sizes) {
-    // 각 w, h에서 큰 수를 w로 보내기
-    const normalized = sizes.map(([w, h]) => w < h ? [h, w] : [w, h]);
-    const maxW = Math.max(...normalized.map(([w]) => w));
-    const maxH = Math.max(...normalized.map(([, h]) => h));
+    // (큰 수, 작은 수)로 변경
+    
+    let maxW = 0;  // 큰 수 중에 제일 큰 값
+    let maxH = 0;  // 작은 수 중에 제일 큰 값
+    
+    for (const [x, y] of sizes) {
+        
+        const max = Math.max(x, y);
+        const min = Math.min(x, y);
+        
+        if (max > maxW) maxW = max;
+        if (min > maxH) maxH = min;
+    }
     
     return maxW * maxH;
 }
