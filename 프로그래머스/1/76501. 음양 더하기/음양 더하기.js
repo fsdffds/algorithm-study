@@ -1,12 +1,4 @@
 function solution(absolutes, signs) {
-    let sum = 0;
-
-    for (let i = 0; i < absolutes.length; i++) {
-        if (!signs[i]) absolutes[i] *= (-1);
-        else absolutes[i];
-    }
-    absolutes.map((a, i) => {
-        sum += absolutes[i];
-    })
-    return sum;
+    // signs 순회해서 false인 것만 absolutes에 곱하기
+    return absolutes.reduce((acc, cur, i) => acc + (signs[i] ? cur : -cur), 0);
 }
